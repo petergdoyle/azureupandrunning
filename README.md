@@ -77,8 +77,8 @@ Create a VM on Azure using the azure-cli
 [vagrant@azure ~]$ REGION="West US"
 [vagrant@azure ~]$ AZURE_VM_MACHINE_NAME="estreaming-demo"
 [vagrant@azure ~]$ MACHINE_IMG_NAME="0b11de9248dd4d87b18621318e037d37__RightImage-CentOS-7.0-x64-v14.2.1"
-[vagrant@azure ~]$ MACHINE_USER="peterdoyle"
-[vagrant@azure ~]$ MACHINE_USER_PW="Celebration99$"
+[vagrant@azure ~]$ MACHINE_USER="<username>"
+[vagrant@azure ~]$ MACHINE_USER_PW="<password>"
 [vagrant@azure ~]$ azure vm docker create -e 22 --ssh-cert=./myCert.pem --no-ssh-password -l $REGION $AZURE_VM_MACHINE_NAME $MACHINE_IMG_NAME $MACHINE_USER $MACHINE_USER_PW
 ```
 
@@ -122,7 +122,7 @@ Stop SSH timeouts
 Stop sudo password.
 Make sure that the user you created is part of the wheel group
 ```console
-[peterdoyle@estreaming-demo-air ~]$ sudo usermod -aG wheel peterdoyle
+[peterdoyle@estreaming-demo-air ~]$ sudo usermod -aG wheel <username>
 ```
 Specify that that wheel group needs no sudo password
 ```console
