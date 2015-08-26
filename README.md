@@ -54,7 +54,7 @@ Now you should be able to see your account info by typing the following azure-cl
 [vagrant@azure ~]$ curl -sSL https://get.docker.com/ | sh
 [vagrant@azure ~]$ sudo curl -sSL https://get.docker.com/ | sh
 [vagrant@azure ~]$ sudo yum -y update
-[vagrant@azure ~]$ sudo usermod -aG docker your_username
+[vagrant@azure ~]$ sudo usermod -aG docker <username>
 [vagrant@azure ~]$ sudo service docker start
 [vagrant@azure ~]$ sudo docker run hello-world
 ```
@@ -93,6 +93,17 @@ Create a VM on Azure using the azure-cli. Note I am creating a machine that is i
 [vagrant@azure ~]$ MACHINE_USER_PW="<password>"
 [vagrant@azure ~]$ azure vm docker create -e 22 --ssh-cert=./myAzureMachine.pem --no-ssh-password -l $REGION $AZURE_VM_MACHINE_NAME $MACHINE_IMG_NAME $MACHINE_USER $MACHINE_USER_PW
 ```
+
+You should get some type of message indicating that the vm was created successfully. If not, you'll have to troubleshoot based on the messages returned. If you are successful you should be able now to ssh into it.
+
+```console
+[vagrant@azure ~]$ ssh <username> $AZURE_VM_MACHINE_NAME.cloudapp.net
+```
+
+As well you should be able to see and manage your vm in the Azure portal app.
+
+It is located [https://portal.azure.com/?r=1](https://portal.azure.com/?r=1). It is organized by resources, so click on Browse All and find the Virtual Machine resources links and go in from there. With the portal you can reprovision your vm to something other than the default (1 core, 1Gb), open up endpoints (port mappings to services on your vm like http/80, https/443, etc.)
+
 
 #### <i class="icon-file"></i> Common Commands to Control the VM
 Start the azure vm
